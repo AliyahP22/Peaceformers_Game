@@ -1,7 +1,7 @@
 import simplegui
 
 def draw(canvas):
-     canvas.draw_circle((100, 100), 60, 5, "Black", "Mediumvioletred")
+     canvas.draw_circle((545, 65), 50, 5, "goldenrod", "gold")
      canvas.draw_line((1, 500), (600, 500), 50, "forestgreen")
      canvas.draw_line((1,600),(600,600),200, "forestgreen")
 
