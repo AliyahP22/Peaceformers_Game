@@ -1,12 +1,11 @@
 import simplegui
 
-def draw(canvas):
+def draw(canvas): #setting of game
      canvas.draw_circle((545, 65), 50, 5, "goldenrod", "gold")
      canvas.draw_line((1, 500), (600, 500), 50, "forestgreen")
      canvas.draw_line((1,600),(600,600),200, "forestgreen")
-
-
-
+#Villagers of game
+     canvas.draw_circle((45,300),25,5,"black", "peru")
 
 
 
