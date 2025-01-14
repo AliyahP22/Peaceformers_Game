@@ -1,6 +1,3 @@
-
-
-
 import simplegui
 
 def draw(canvas):
