@@ -1,58 +1,26 @@
 import simplegui
 import random
 
-def draw(canvas): #setting of game
-     canvas.draw_circle((545, 65), 50, 5, "goldenrod", "gold")
-     canvas.draw_line((1, 500), (600, 500), 50, "forestgreen")
-     canvas.draw_line((1,600),(600,600),200, "forestgreen")
-#Villagers of game
-     canvas.draw_circle([150, 100], 30, 2, 'Black', 'white')
-     # Body (line)
-     canvas.draw_line([150, 130], [150, 250], 4, 'Black')
-     # Arms (lines) 
-     canvas.draw_line([150, 150], [100, 200], 4, 'Black') 
-     canvas.draw_line([150, 150], [200, 200], 4, 'Black') 
-     # Legs (lines) 
-     canvas.draw_line([150, 250], [100, 350], 4, 'Black') 
-     canvas.draw_line([150, 250], [200, 350], 4, 'Black')
+#global variables that would be used 
+rooms = ["Room 1", "Room 2", "Room 3" "Surprise Room"]
 
-
-rooms = { #different frames
-    "Room 1": {
-        "description": "You are in the first forest! Collect the resources to share to the village!",
-        "exits": ["Go North"],
-        "event": "solve riddle to leave forest",
-        "item": "Sword"
-        canvas.draw_circle((545, 65), 50, 5, "goldenrod", "gold")
-        canvas.draw_line((1, 500), (600, 500), 50, "forestgreen")
-        canvas.draw_line((1,600),(600,600),200, "forestgreen")
-    },
-    "Room 2": {
-        "description": "This room smells of old wood. You see a chest in the corner.",
-        "exits": ["Go South", "Go North"],
-        "event": "treasure",
-        "item": "Potion"
-    },
-    "Room 3": {
-        "description": "You are in a cave with glowing crystals. There's a door to the south.",
-        "exits": ["Go South"],
-        "event": "none",
-        "item": "Torch"
-    }
-}
-
+#variables 
 inventory = []
-health_total = 10
-score = 0
-current_room = "Room 1"
+health_total = {room:10 for room in rooms} #sets 10 health for each room
+decisions_log = []
 
+#variables used in game
+resources_sizes = 20
+position_resources = []
+score = 0 #initial score
 
-
-
-
+def random_resources():
+    x = random.randint(1,500)
+    y = random.randint(1,500)
+    position_resources.append([x,y])
 # Event handlers for player movement
 def keydown(key):
-    """Handles player movement."""
+    #Handles player movement
     if not game_over:
         if key == simplegui.KEY_MAP['left']:
             player_pos[0] -= 10
@@ -60,9 +28,19 @@ def keydown(key):
             player_pos[0] += 10
         elif key == simplegui.KEY_MAP['up']:
             player_pos[1] -= 10
-        elif key == simplegui.KEY_MAP['down']:
+        elif key == simplegui.KEY_MAP['down']:#allows user to use keyboard to control
             player_pos[1] += 10
 
+ 
+def draw(canvas):
+    canvas.draw_circle((545, 65), 50, 5, "goldenrod", "gold")
+    canvas.draw_line((1, 500), (600, 500), 50, "forestgreen")
+    canvas.draw_line((1,600),(600,600),200, "forestgreen")
+    
+    #drawing resources
+    for resource in position_resources:
+        canvas.draw_circle(resource, resources_sizes / 2, 2, "black", "cyan")
+    
 
 frame = simplegui.create_frame("My G4C Game", 600,600)
 frame.set_draw_handler(draw)
@@ -72,6 +50,8 @@ frame.set_canvas_background("lightskyblue")
 
 
 frame.start()
+
+
 
 
 
