@@ -12,6 +12,7 @@ events = ["monster", "potions", "treasures", "none"]
 
 #variables used in game
 resources_sizes = 20
+positions_resources = []
 position_resources = []
 score = 0 #initial score
 
@@ -22,7 +23,9 @@ def random_resources():
     x = random.randint(1,500)
     y = random.randint(1,500)
     position_resources.append([x,y])
-    
+    position_resources.append([x,y])
+    position_resources.append([x,y])
+    position_resources.append([x,y])
     
 def random_events():
     events = random.randint(1,4)
@@ -59,6 +62,11 @@ def keydown(key):
         elif key == simplegui.KEY_MAP['down']:#allows user to use keyboard to control
             player_pos[1] += 10
 
+            
+            
+            
+win_or_lose()
+random_resources()
  
 def draw(canvas):
     canvas.draw_circle((545, 65), 50, 5, "goldenrod", "gold")
@@ -78,6 +86,7 @@ frame.set_canvas_background("lightskyblue")
 
 
 frame.start()
+
 
 
 
