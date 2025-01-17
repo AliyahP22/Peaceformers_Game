@@ -8,16 +8,44 @@ rooms = ["Room 1", "Room 2", "Room 3" "Surprise Room"]
 inventory = []
 health_total = {room:10 for room in rooms} #sets 10 health for each room
 decisions_log = []
+events = ["monster", "potions", "treasures", "none"]
 
 #variables used in game
 resources_sizes = 20
 position_resources = []
 score = 0 #initial score
 
+win = False
+lose = False 
+
 def random_resources():
     x = random.randint(1,500)
     y = random.randint(1,500)
     position_resources.append([x,y])
+    
+    
+def random_events():
+    events = random.randint(1,4)
+    if events == 1:
+        return "OH NO! A monster stole some of your resources! Lost a life!"
+        health_total -=1
+    elif events == 2:
+        return "Wow a potion! You gained 5 resources and 1 live!"
+        health_total += 1 
+    elif events == 3:
+        return "CONGRATS! You found hidden treasure! 50 resources! Go share it with the village"
+    else:
+        return "Sorry, nothing happens"
+
+def win_or_lose():
+    if score >=100:
+        return "CONGRATS! YOU HELPED THE VILLAGE! Play again?"
+        win = True 
+        lose = False 
+    else:
+        win = False 
+        lose = True 
+                          
 # Event handlers for player movement
 def keydown(key):
     #Handles player movement
@@ -50,6 +78,8 @@ frame.set_canvas_background("lightskyblue")
 
 
 frame.start()
+
+
 
 
 
