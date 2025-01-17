@@ -13,12 +13,14 @@ events = ["monster", "potions", "treasures", "none"]
 #variables used in game
 resources_sizes = 20
 positions_resources = []
+resources = 15
 position_resources = []
+player_position = [300,300]
+player_size = 20
 score = 0 #initial score
 
 win = False
 lose = False 
-
 def random_resources():
     x = random.randint(1,500)
     y = random.randint(1,500)
@@ -76,6 +78,9 @@ def draw(canvas):
     #drawing resources
     for resource in position_resources:
         canvas.draw_circle(resource, resources_sizes / 2, 2, "black", "cyan")
+    #drawing player
+        canvas.draw_circle(player_position, player_size/2, 5, "black", "pink")
+    
     
 
 frame = simplegui.create_frame("My G4C Game", 600,600)
