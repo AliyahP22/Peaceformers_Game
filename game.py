@@ -55,7 +55,7 @@ def win_or_lose():
 
 def check_points():
     for resource in positions_resources[:]:
-        if (abs(player_position[0] - resource[0]) < (player_size + resources_sizes) / 2 and (abs(player_position[1] - resource[1]) < (player_size + resources_sizes) / 2):
+        if (abs(player_position[0] - resource[0]) < (player_size + resources_sizes) / 2 and abs(player_position[1] - resource[1]) < (player_size + resources_sizes) / 2):
             position_resources.remove(resource) #Checks to see if player comes in contact with the resources
             score +=2
             log_event("Congrats you found resources! Be sure to share with the village")
@@ -64,15 +64,15 @@ def check_points():
             
 def keydown(key):
     #Handles player movement
-    if not game_over:
+    if not lose:
         if key == simplegui.KEY_MAP['left']:
-            player_pos[0] -= 10
+            player_position[0] -= 10
         elif key == simplegui.KEY_MAP['right']:
-            player_pos[0] += 10
+            player_position[0] += 10
         elif key == simplegui.KEY_MAP['up']:
-            player_pos[1] -= 10
+            player_position[1] -= 10
         elif key == simplegui.KEY_MAP['down']:#allows user to use keyboard to control
-            player_pos[1] += 10
+            player_position[1] += 10
 
             
             
@@ -93,7 +93,7 @@ def draw(canvas):
     
     
 
-frame = simplegui.create_frame("My G4C Game", 600,600)
+frame = simplegui.create_frame("My Peaceformers Game", 600,600)
 frame.set_draw_handler(draw)
 frame.set_canvas_background("lightskyblue")
 
@@ -101,7 +101,6 @@ frame.set_canvas_background("lightskyblue")
 
 
 frame.start()
-
 
 
 
