@@ -50,8 +50,18 @@ def win_or_lose():
     else:
         win = False 
         lose = True 
+        random_events()
                           
-# Event handlers for player movement
+
+def check_points():
+    for resource in positions_resources[:]:
+        if (abs(player_position[0] - resource[0]) < (player_size + resources_sizes) / 2 and (abs(player_position[1] - resource[1]) < (player_size + resources_sizes) / 2):
+            position_resources.remove(resource) #Checks to see if player comes in contact with the resources
+            score +=2
+            log_event("Congrats you found resources! Be sure to share with the village")
+            random_resources()
+            
+            
 def keydown(key):
     #Handles player movement
     if not game_over:
