@@ -19,10 +19,13 @@ def draw(canvas): #setting of game
 
 rooms = { #different frames
     "Room 1": {
-        "description": "You are in a dark, damp room. There's a door to the north.",
+        "description": "You are in the first forest! Collect the resources to share to the village!",
         "exits": ["Go North"],
-        "event": "monster",
+        "event": "solve riddle to leave forest",
         "item": "Sword"
+        canvas.draw_circle((545, 65), 50, 5, "goldenrod", "gold")
+        canvas.draw_line((1, 500), (600, 500), 50, "forestgreen")
+        canvas.draw_line((1,600),(600,600),200, "forestgreen")
     },
     "Room 2": {
         "description": "This room smells of old wood. You see a chest in the corner.",
@@ -47,25 +50,18 @@ current_room = "Room 1"
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Event handlers for player movement
+def keydown(key):
+    """Handles player movement."""
+    if not game_over:
+        if key == simplegui.KEY_MAP['left']:
+            player_pos[0] -= 10
+        elif key == simplegui.KEY_MAP['right']:
+            player_pos[0] += 10
+        elif key == simplegui.KEY_MAP['up']:
+            player_pos[1] -= 10
+        elif key == simplegui.KEY_MAP['down']:
+            player_pos[1] += 10
 
 
 frame = simplegui.create_frame("My G4C Game", 600,600)
@@ -76,5 +72,7 @@ frame.set_canvas_background("lightskyblue")
 
 
 frame.start()
+
+
 
 
