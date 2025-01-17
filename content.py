@@ -1,4 +1,5 @@
 import simplegui
+import random
 
 def draw(canvas): #setting of game
      canvas.draw_circle((545, 65), 50, 5, "goldenrod", "gold")
@@ -55,4 +56,3 @@ frame.set_canvas_background("lightskyblue")
 
 
 frame.start()
-
