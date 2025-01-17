@@ -17,11 +17,31 @@ def draw(canvas): #setting of game
      canvas.draw_line([150, 250], [200, 350], 4, 'Black')
 
 
+rooms = { #different frames
+    "Room 1": {
+        "description": "You are in a dark, damp room. There's a door to the north.",
+        "exits": ["Go North"],
+        "event": "monster",
+        "item": "Sword"
+    },
+    "Room 2": {
+        "description": "This room smells of old wood. You see a chest in the corner.",
+        "exits": ["Go South", "Go North"],
+        "event": "treasure",
+        "item": "Potion"
+    },
+    "Room 3": {
+        "description": "You are in a cave with glowing crystals. There's a door to the south.",
+        "exits": ["Go South"],
+        "event": "none",
+        "item": "Torch"
+    }
+}
 
-
-
-
-
+inventory = []
+health_total = 10
+score = 0
+current_room = "Room 1"
 
 
 
@@ -56,3 +76,5 @@ frame.set_canvas_background("lightskyblue")
 
 
 frame.start()
+
+
