@@ -24,12 +24,17 @@ def random_resources():
 random_resources()
 
 def random_events():
+    global health, score
     event = random.randint(1,4)
     if event == 1:
+        health -= 1
         return "Oh no a monster stole some resources! Lost a life"
     elif event == 2:
+        score += 5
+        health +=1
         return "A potion! You gained 5 resources and a life!"
     elif event == 3:
+        score +=15
         return "You found the treaure! You gained 15 resources! Be sure to share"
     else:
         return "Sorry, nothing happens"
@@ -40,7 +45,7 @@ def win_or_lose():
     if score>=100:
         win = True
         return "Congrats! You helped the village"
-    elif health <= 0:
+    elif health <= 0 or score <= 13:
         lose = True
         return "Game over"
 
@@ -89,14 +94,8 @@ def draw(canvas):
     if result:
         canvas.draw_text(result,[150,300],30,"Red")
         event_message = random_events()
-        resources = 0
-        if "monster" in event_message:
-            health -= 1
-        elif "potion" in event_message:
-            resources += 5
-            health += 1
-        elif "treasure"in event_message:
-            resources += 50
+        canvas.draw_text(event_message,[160,350], 20, "Black")
+        
 
 def restart_game():
     global score, health, win, lose, player_position, position, resources
