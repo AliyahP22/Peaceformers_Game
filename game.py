@@ -97,9 +97,7 @@ def draw(canvas): #background graphics
     result = win_or_lose()
     if result:
         canvas.draw_text(result,[150,300],30,"Red") #displays messages 
-        event_message = random_events()
-        canvas.draw_text(event_message,[160,350], 20, "Black")
-        random_events()
+        
         
         
 
