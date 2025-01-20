@@ -102,6 +102,7 @@ frame = simplegui.create_frame("My Peaceformers Game", 600, 600)
 frame. set_draw_handler(draw)
 frame. set_canvas_background("lightskyblue")
 frame.set_keydown_handler(keydown)
+frame.add_button("Trigger Random Event", random_events, 150)
 frame.start()
 
 
