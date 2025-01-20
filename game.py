@@ -68,6 +68,7 @@ def keydown(key):
             player_position[1] -= 10
         elif key == simplegui.KEY_MAP['down']:
             player_position[1] += 10
+       
             
             
 def draw(canvas):
@@ -97,12 +98,22 @@ def draw(canvas):
         elif "treasure"in event_message:
             resources += 50
 
-            
+def restart_game():
+    global score, health, win, lose, player_position, position, resources
+    score = 0
+    health = 3
+    win = False
+    lose = False
+    player_position = [300,300]
+    position_resources = []
+    random_resources()
+                
 frame = simplegui.create_frame("My Peaceformers Game", 600, 600)
 frame. set_draw_handler(draw)
 frame. set_canvas_background("lightskyblue")
 frame.set_keydown_handler(keydown)
 frame.add_button("Trigger Random Event", random_events, 150)
+frame.add_button("Restart Game", restart_game, 150)
 frame.start()
 
 
